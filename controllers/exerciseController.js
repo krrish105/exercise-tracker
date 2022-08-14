@@ -4,14 +4,15 @@ import User from "../models/userModel.js";
 const createExercise = async (req, res) => {
 	const { _id } = req.params;
 	const { description, duration, date } = req.body;
+
 	if (!_id || !description || !duration) {
-		res.status(400).json({
+		return res.status(400).json({
 			msg: "Please provide the user id, description, duration and date",
 		});
 	}
 	const user = await User.findById(_id).select("-__v");
 	if (!user) {
-		res.status(400).json({ msg: "No user found for this id" });
+		return res.status(400).json({ msg: "No user found for this id" });
 	}
 
 	let dateData;

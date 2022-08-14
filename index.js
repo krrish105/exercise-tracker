@@ -24,8 +24,8 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/users", userRouter);
-app.use("/api/users/:_id/exercises", exerciseRouter);
-app.use("/api/users/:_id/logs", logRouter);
+app.use("/api/users", exerciseRouter);
+app.use("/api/users", logRouter);
 
 const port = process.env.PORT || 3000;
 const start = async () => {
